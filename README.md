@@ -1,4 +1,4 @@
-# 🧮 Calculadora FastAPI (Padrão MVC)
+# 🧮 Calculadora FastAPI
 
 Este projeto é uma API simples de calculadora, construída com FastAPI, utilizando o padrão arquitetural **MVC (Model-View-Controller)**. A lógica das operações foi separada em uma biblioteca interna para manter o código limpo e reutilizável.
 
