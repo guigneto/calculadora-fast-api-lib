@@ -18,6 +18,8 @@ calculadora-fastapi/
 │       └── routes.py                # Definição das rotas/endpoints
 ├── calculadora_lib/
 │   └── operations.py           # Biblioteca com a lógica matemática
+├── tests/
+   └── test_main.py          # Arquivo para execução de testes automatizados
 ```
 ## 🚀 Tecnologias
 
