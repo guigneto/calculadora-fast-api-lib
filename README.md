@@ -1,24 +1,24 @@
-# 🧮 Calculadora com FastAPI
+# 🧮 Calculadora FastAPI (Padrão MVC)
 
-Este é um projeto simples de API REST usando FastAPI, com operações matemáticas básicas: soma, subtração, multiplicação, divisão e exponenciação. A lógica das operações foi separada em uma biblioteca interna para manter o código limpo e reutilizável.
+Este projeto é uma API simples de calculadora, construída com FastAPI, utilizando o padrão arquitetural **MVC (Model-View-Controller)**. A lógica das operações foi separada em uma biblioteca interna para manter o código limpo e reutilizável.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📂 Estrutura do Projeto
 
 ```
-calculadora-fast-api-lib/
+calculadora-fastapi/
 ├── app/
-│ ├── main.py
-│ └── models.py
+│   ├── main.py                  # Inicialização da aplicação FastAPI
+│   ├── controllers/
+│   │   └── calculator_controller.py  # Controladores que executam a lógica
+│   ├── models/
+│   │   └── calculator_models.py      # Modelos Pydantic para entrada de dados
+│   └── views/
+│       └── routes.py                # Definição das rotas/endpoints
 ├── calculadora_lib/
-│ ├── init.py
-│ └── operations.py
-├── tests/
-  └── test_main.py
+│   └── operations.py           # Biblioteca com a lógica matemática
 ```
----
-
 ## 🚀 Tecnologias
 
 - Python 3.10+
@@ -28,52 +28,34 @@ calculadora-fast-api-lib/
 
 ---
 
-## 📦 Instalação
+## 🔥 Como rodar
 
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/guigneto/calculadora-fast-api.git
-cd calculadora-fast-api
-```
-
-2. Crie e ative um ambiente virtual (opcional, mas recomendado):
+1. Instale as dependências:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+pip install fastapi uvicorn
 ```
 
-3. Instale as dependências:
+2. Execute o servidor:
 
 ```bash
-pip install fastapi uvicorn pytest
+uvicorn app.main:app --reload
 ```
 
----
-
-## ▶️ Executando a API
-
-Dentro da raiz do projeto, execute:
-
-```bash
-uvicorn main:app --reload
-```
-
-Acesse: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) para testar os endpoints via Swagger UI.
+3. Acesse a documentação interativa:
+- Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
 ## ✅ Endpoints disponíveis
 
-| Operação        | Método | Rota              |
-|-----------------|--------|-------------------|
-| Soma            | POST   | `/soma`           |
-| Subtração       | POST   | `/subtracao`      |
-| Multiplicação   | POST   | `/multiplicacao`  |
-| Divisão         | POST   | `/divisao`        |
-| Exponenciação   | POST   | `/exponenciacao`  |
+| Método | Rota               | Descrição                |
+|--------|--------------------|--------------------------|
+| POST   | `/soma`            | Soma dois números        |
+| POST   | `/subtracao`       | Subtrai dois números     |
+| POST   | `/multiplicacao`   | Multiplica dois números  |
+| POST   | `/divisao`         | Divide dois números      |
+| POST   | `/exponenciacao`   | Exponencia dois números  |
 
 ### 📤 Corpo da requisição (JSON):
 
@@ -83,9 +65,6 @@ Acesse: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) para testar os 
   "b": 2
 }
 ```
-
----
-
 ## 🧪 Rodando os testes
 
 Os testes automatizados estão na pasta `tests/`.
